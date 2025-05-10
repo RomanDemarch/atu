@@ -11,7 +11,7 @@ const formatNumber = (num) => {
   return num?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 };
 
-export default function CustomPopup({ props, type }) {
+export default function CustomPopup({ props, type, onShowCommunes }) {
   const isLand = type === "land";
 
   const handleClick = () => {
