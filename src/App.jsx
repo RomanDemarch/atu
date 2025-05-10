@@ -36,6 +36,15 @@ function FitBounds({ bounds }) {
 
 
 function ModelMap() {
+  const showCommunesHandler = (landId) => {
+    const layer = landLayersRef.current[landId];
+    if (!layer) return;
+    const bounds = layer.getBounds();
+    setSelectedLand(landId);
+    setView("communes");
+    setBounds(bounds);
+  };
+
   const mapRef = useRef(null);
   const mapBoundsRef = useRef(null);
   const landLayersRef = useRef({});
@@ -98,7 +107,7 @@ function ModelMap() {
         landLayersRef.current[feature.properties.OBJECTID] = layer;
       },
     });
-    const html = ReactDOMServer.renderToString(<CustomPopup props={feature.properties} type="land" />);
+    const html = ReactDOMServer.renderToString(<CustomPopup props={feature.properties} type="land" onShowCommunes={showCommunesHandler} />);
     layer.bindPopup(html, { maxWidth: "auto", minWidth: 100 });
   };
 
