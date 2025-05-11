@@ -99,27 +99,58 @@ function ModelMap() {
   };
 
   const handleLandClick = (feature, layer) => {
-    layer.on({
-      click: () => {
-        setSelectedLand(feature.properties.OBJECTID);
-        const layerBounds = layer.getBounds();
-        setBounds(layerBounds);
-        landLayersRef.current[feature.properties.OBJECTID] = layer;
-      },
-    });
-    const popupProps = {
-    ...feature.properties,
-    bounds
-  };
+  layer.on({
+    click: () => {
+      setSelectedLand(feature.properties.OBJECTID);
+      const layerBounds = layer.getBounds();
+      setBounds(layerBounds);
+      landLayersRef.current[feature.properties.OBJECTID] = layer;
+    },
+  });
+
+  const html = ReactDOMServer.renderToString(
+    <CustomPopup props={feature.properties} type="land" />
+  );
+
+  layer.bindPopup(html, { maxWidth: "auto", minWidth: 100 });
+
+  layer.on("popupopen", () => {
+    const button = document.querySelector(".show-communes-btn");
+    if (button) {
+      button.addEventListener("click", () => {
+        window.dispatchEvent(
+          new CustomEvent("showCommunes", {
+            detail: { landId: feature.properties.OBJECTID },
+          })
+        );
+        document.querySelector(".leaflet-popup-close-button")?.click();
+      });
+    }
+  });
+};
+
   const html = ReactDOMServer.renderToString(<CustomPopup props={feature.properties} type="land" onShowCommunes={showCommunesHandler} />);
     layer.bindPopup(html, { maxWidth: "auto", minWidth: 100 });
   };
 
   const handleCommuneClick = (feature, layer) => {
-    const popupProps = {
-    ...feature.properties,
-    bounds
-  };
+  const html = ReactDOMServer.renderToString(
+    <CustomPopup props={feature.properties} type="commune" />
+  );
+
+  layer.bindPopup(html, { maxWidth: "auto", minWidth: 100 });
+
+  layer.on("popupopen", () => {
+    const button = document.querySelector(".back-to-lands-btn");
+    if (button) {
+      button.addEventListener("click", () => {
+        window.dispatchEvent(new CustomEvent("backToLands"));
+        document.querySelector(".leaflet-popup-close-button")?.click();
+      });
+    }
+  });
+};
+
   const html = ReactDOMServer.renderToString(<CustomPopup props={feature.properties} type="commune" />);
     layer.bindPopup(html, { maxWidth: "auto", minWidth: 100 });
   };
