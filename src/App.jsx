@@ -8,21 +8,6 @@ import CustomPopup from "@/components/CustomPopup";
 import lands from "./data/Lands.json";
 import communes from "./data/Communes.json";
 import landOutlines from './data/lands-outline.json';
-import L from "leaflet";
-
-// Import the Leaflet MapTiler Plugin
-import { MaptilerLayer } from "@maptiler/leaflet-maptilersdk";
-
-const map = L.map('map', {
-  center: L.latLng(0, 0),
-  zoom: 6,
-});
-
-// Create a MapTiler Layer inside Leaflet
-const mtLayer = new L.maptiler.maptilerLayer({
-  // Get your free API key at https://cloud.maptiler.com
-  apiKey: "0qOWcsT4qA77xY12ZOQC",
-}).addTo(map);
 
 function FitBounds({ bounds }) {
   const map = useMap();
@@ -178,10 +163,8 @@ setTimeout(() => {
       <MapContainer center={[53.7, 27.9]} zoom={7} minZoom={6} maxBounds={maxBounds} maxBoundsViscosity={1.0} className="h-full w-full z-0"
         whenCreated={(map) => (mapRef.current = map)}>
       <TileLayer
-        attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> &copy; OpenStreetMap contributors'
-        url="https://api.maptiler.com/maps/0196c0dc-edd4-73f8-aa81-21e2afa40b4e/style.json?key=0qOWcsT4qA77xY12ZOQC"
-        tileSize={512}
-        zoomOffset={-1}
+        attribution='&copy; <a href="https://www.openstreetmap.org">OpenStreetMap</a>'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 {view === "lands" && (
   <GeoJSON
