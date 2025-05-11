@@ -163,8 +163,10 @@ setTimeout(() => {
       <MapContainer center={[53.7, 27.9]} zoom={7} minZoom={6} maxBounds={maxBounds} maxBoundsViscosity={1.0} className="h-full w-full z-0"
         whenCreated={(map) => (mapRef.current = map)}>
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org">OpenStreetMap</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a>'
+          url="https://api.maptiler.com/maps/0196c0dc-edd4-73f8-aa81-21e2afa40b4e/tiles/{z}/{x}/{y}.png?key=vzMsmeKK23VDqmJbrWPd"
+           tileSize={512}
+          zoomOffset={-1}
         />
 {view === "lands" && (
   <GeoJSON
