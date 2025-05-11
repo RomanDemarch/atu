@@ -173,11 +173,10 @@ setTimeout(() => {
     data={lands}
     style={landStyle}
     onEachFeature={handleLandClick}
+    ref={landsLayerRef}
   />
 )}
-        {view === "lands" && false && (
-          <GeoJSON data={lands} style={landStyle} onEachFeature={handleLandClick} ref={landsLayerRef}/>
-        )}
+
         {view === "communes" && selectedLand && (
           <GeoJSON
             data={{
