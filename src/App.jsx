@@ -94,7 +94,7 @@ function ModelMap() {
     });
 
           }
-    });
+    };
   };
 
   import { createRoot } from "react-dom/client";
