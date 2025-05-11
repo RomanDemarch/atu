@@ -107,12 +107,20 @@ function ModelMap() {
         landLayersRef.current[feature.properties.OBJECTID] = layer;
       },
     });
-    const html = ReactDOMServer.renderToString(<CustomPopup props={feature.properties} type="land" onShowCommunes={showCommunesHandler} />);
+    const popupProps = {
+    ...feature.properties,
+    bounds
+  };
+  const html = ReactDOMServer.renderToString(<CustomPopup props={feature.properties} type="land" onShowCommunes={showCommunesHandler} />);
     layer.bindPopup(html, { maxWidth: "auto", minWidth: 100 });
   };
 
   const handleCommuneClick = (feature, layer) => {
-    const html = ReactDOMServer.renderToString(<CustomPopup props={feature.properties} type="commune" />);
+    const popupProps = {
+    ...feature.properties,
+    bounds
+  };
+  const html = ReactDOMServer.renderToString(<CustomPopup props={feature.properties} type="commune" />);
     layer.bindPopup(html, { maxWidth: "auto", minWidth: 100 });
   };
 
