@@ -139,11 +139,10 @@ setTimeout(() => {
       window.dispatchEvent(new CustomEvent("backToLands"));
       document.querySelector(".leaflet-popup-close-button")?.click();
 
-      // Зум ко всей стране
       const map = mapRef.current;
-      const layer = landsLayerRef.current;
-      if (map && bounds) {
-        const bounds = layer.getBounds();
+      const landLayer = landsLayerRef.current;
+      if (map && landLayer) {
+        const bounds = landLayer.getBounds();
         map.flyToBounds(bounds, { animate: true, duration: 0.75 });
       }
     });
