@@ -131,15 +131,22 @@ const handleCommuneClick = (feature, layer) => {
     layer.openPopup();
 
     // Навешиваем обработчик после отрисовки нового попапа
-    setTimeout(() => {
-      const button = document.querySelector(".back-to-lands-btn");
-      if (button) {
-        button.addEventListener("click", () => {
-          window.dispatchEvent(new CustomEvent("backToLands"));
-          document.querySelector(".leaflet-popup-close-button")?.click();
-        });
+setTimeout(() => {
+  const button = document.querySelector(".back-to-lands-btn");
+  if (button) {
+    button.addEventListener("click", () => {
+      window.dispatchEvent(new CustomEvent("backToLands"));
+      document.querySelector(".leaflet-popup-close-button")?.click();
+
+      // Зум ко всей стране
+      const map = mapRef.current;
+      const bounds = mapBoundsRef.current;
+      if (map && bounds) {
+        map.flyToBounds(bounds, { animate: true, duration: 0.75 });
       }
-    }, 0);
+    });
+  }
+}, 0);
   });
 };
 
