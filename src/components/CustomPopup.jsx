@@ -92,9 +92,29 @@ export default function CustomPopup({ props, type }) {
 
       <div style={{ marginTop: "10px" }}>
         {isLand ? (
-          <button className="show-communes-btn">Показать общины</button>
+          <button className="show-communes-btn"
+      style={{
+        padding: "8px 16px",
+        border: "2px solid #DD2233",
+        borderRadius: "8px",
+        backgroundColor: "#fff",
+        color: "#DD2233",
+        fontWeight: "bold",
+        cursor: "pointer"
+      }}
+          >Грамады/Communes</button>
         ) : (
-          <button className="back-to-lands-btn">Вернуться к землям</button>
+          <button className="back-to-lands-btn"
+      style={{
+        padding: "8px 16px",
+        border: "2px solid #DD2233",
+        borderRadius: "8px",
+        backgroundColor: "#fff",
+        color: "#DD2233",
+        fontWeight: "bold",
+        cursor: "pointer"
+      }}
+          >Да земляў/To lands</button>
         )}
       </div>
     </div>
