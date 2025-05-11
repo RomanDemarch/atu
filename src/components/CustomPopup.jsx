@@ -111,7 +111,7 @@ export default function CustomPopup({ props, type, onShowCommunes }) {
 <button onClick={() => {
   if (isLand) {
     window.dispatchEvent(new CustomEvent("showCommunes", {
-      detail: { landId: props.OBJECTID, bounds: layer.getBounds() }
+      detail: { landId: props.OBJECTID, bounds: props.bounds }
     }));
   } else {
     window.dispatchEvent(new CustomEvent("backToLands"));
