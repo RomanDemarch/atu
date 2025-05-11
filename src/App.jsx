@@ -7,6 +7,7 @@ import ReactDOMServer from "react-dom/server";
 import CustomPopup from "@/components/CustomPopup";
 import lands from "./data/Lands.json";
 import communes from "./data/Communes.json";
+import landOutlines from './data/lands-outline.json';
 
 function FitBounds({ bounds }) {
   const map = useMap();
@@ -148,11 +149,17 @@ function ModelMap() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <GeoJSON
-          data={lands}
-          style={landStyle}
-          onEachFeature={view === "lands" ? handleLandClick : undefined}
-          interactive={view === "lands"}
-        />
+  data={lands}
+  style={landStyle}
+  onEachFeature={(feature, layer) => {
+    if (view === "lands") {
+      handleLandClick(feature, layer);
+    } else {
+      layer.off();
+      layer.unbindPopup();
+    }
+  }}
+/>
         {view === "lands" && false && (
           <GeoJSON data={lands} style={landStyle} onEachFeature={handleLandClick} />
         )}
@@ -166,6 +173,19 @@ function ModelMap() {
             onEachFeature={handleCommuneClick}
           />
         )}
+        
+{view === "communes" && (
+  <GeoJSON
+    data={landOutlines}
+    style={{
+      color: "#999",
+      weight: 2,
+      dashArray: "4 4",
+      interactive: false
+    }}
+  />
+)}
+
         <FitBounds bounds={bounds} />
       </MapContainer>
     </div>
