@@ -203,7 +203,6 @@ const handleCommuneClick = (feature, layer) => {
       </MapContainer>
     </div>
   );
-}
 
 export default function App() {
   return (
