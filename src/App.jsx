@@ -7,7 +7,6 @@ import ReactDOMServer from "react-dom/server";
 import CustomPopup from "@/components/CustomPopup";
 import lands from "./data/Lands.json";
 import communes from "./data/Communes.json";
-import getCustomPopupHTML from "./components/CustomPopup";
 
 
 function FitBounds({ bounds }) {
@@ -112,13 +111,7 @@ function ModelMap() {
     ...feature.properties,
     bounds
   };
-  const html = getCustomPopupHTML({
-  ...feature.properties,
-  heraldry: `/assets/heraldry/${feature.properties.OBJECTID}.png`,
-  iconArea: "/assets/icons/area.png",
-  iconPopulation: "/assets/icons/population.png",
-  iconCenter: "/assets/icons/center.png"
-}, "land");
+  const html = ReactDOMServer.renderToString(<CustomPopup props={feature.properties} type="land" onShowCommunes={showCommunesHandler} />);
     layer.bindPopup(html, { maxWidth: "auto", minWidth: 100 });
   };
 
@@ -127,13 +120,7 @@ function ModelMap() {
     ...feature.properties,
     bounds
   };
-  const html = getCustomPopupHTML({
-  ...feature.properties,
-  heraldry: `/assets/heraldry/${feature.properties.OBJECTID}.png`,
-  iconArea: "/assets/icons/area.png",
-  iconPopulation: "/assets/icons/population.png",
-  iconCenter: "/assets/icons/center.png"
-}, "land");
+  const html = ReactDOMServer.renderToString(<CustomPopup props={feature.properties} type="commune" />);
     layer.bindPopup(html, { maxWidth: "auto", minWidth: 100 });
   };
 
