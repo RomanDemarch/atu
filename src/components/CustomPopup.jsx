@@ -17,11 +17,11 @@ export default function CustomPopup({ props, type }) {
   return (
     <div style={{ whiteSpace: "nowrap" }}>
       <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-        <div style={{ minWidth: "50px", flexShrink: 0 }}>
+        <div style={{ minWidth: "60px", flexShrink: 0 }}>
           <img
             src={getHeraldryPath(props.OBJECTID)}
             alt="Герб"
-            style={{ height: "50px", width: "50px", objectFit: "contain" }}
+            style={{ height: "60px", width: "60px", objectFit: "contain" }}
             onError={(e) => (e.target.style.display = "none")}
           />
         </div>
