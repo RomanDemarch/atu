@@ -177,12 +177,7 @@ function ModelMap() {
 {view === "communes" && (
   <GeoJSON
     data={landOutlines}
-    style={{
-      color: "#999",
-      weight: 2,
-      dashArray: "4 4",
-      interactive: false
-    }}
+    style={landStyle}
   />
 )}
 
