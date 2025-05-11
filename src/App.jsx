@@ -60,7 +60,11 @@ function ModelMap() {
     const backHandler = () => {
       setSelectedLand(null);
       setView("lands");
-      setBounds(mapBoundsRef.current);
+
+      // отложим на 1 кадр, чтобы слой успел появиться
+      setTimeout(() => {
+        setBounds(mapBoundsRef.current);
+      }, 0);
     };
 
     window.addEventListener("showCommunes", showHandler);
