@@ -187,7 +187,6 @@ const maxBounds = [
       </MapContainer>
     </div>
   );
-}
 
 function Home() {
   return (
