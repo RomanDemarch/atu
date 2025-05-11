@@ -60,11 +60,15 @@ function ModelMap() {
     const backHandler = () => {
       setSelectedLand(null);
       setView("lands");
-
-      // отложим на 1 кадр, чтобы слой успел появиться
+    
+      // зум к всей стране после небольшой задержки
       setTimeout(() => {
-        setBounds(mapBoundsRef.current);
-      }, 0);
+        const map = mapRef.current;
+        const bounds = mapBoundsRef.current;
+        if (map && bounds) {
+          map.fitBounds(bounds, { animate: true, duration: 0.75 });
+        }
+      }, 100); // небольшая задержка гарантирует, что GeoJSON уже на карте
     };
 
     window.addEventListener("showCommunes", showHandler);
