@@ -162,12 +162,12 @@ setTimeout(() => {
     <div className="h-screen w-full">
       <MapContainer center={[53.7, 27.9]} zoom={7} minZoom={6} maxBounds={maxBounds} maxBoundsViscosity={1.0} className="h-full w-full z-0"
         whenCreated={(map) => (mapRef.current = map)}>
-        <TileLayer
-          attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a>'
-          url="https://api.maptiler.com/maps/0196c0dc-edd4-73f8-aa81-21e2afa40b4e/tiles/{z}/{x}/{y}.png?key=vzMsmeKK23VDqmJbrWPd"
-           tileSize={512}
-          zoomOffset={-1}
-        />
+      <TileLayer
+        attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> &copy; OpenStreetMap contributors'
+        url="https://api.maptiler.com/maps/streets-v2/tiles/{z}/{x}/{y}.png?key=0qOWcsT4qA77xY12ZOQC"
+        tileSize={512}
+        zoomOffset={-1}
+      />
 {view === "lands" && (
   <GeoJSON
     data={lands}
