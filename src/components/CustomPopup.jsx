@@ -3,6 +3,7 @@ import iconArea from "../assets/icons/area.png";
 import iconPopulation from "../assets/icons/population.png";
 import iconCenter from "../assets/icons/center.png";
 
+// Функция для загрузки герба по OBJECTID
 const getHeraldryPath = (objectId) =>
   new URL(`../assets/heraldry/${objectId}.png`, import.meta.url).href;
 
@@ -10,7 +11,7 @@ const formatNumber = (num) => {
   return num?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 };
 
-export default function CustomPopup({ props, type, onBackToLands }) {
+export default function CustomPopup({ props, type }) {
   const isLand = type === "land";
 
   return (
@@ -48,15 +49,42 @@ export default function CustomPopup({ props, type, onBackToLands }) {
       >
         <tbody>
           <tr>
-            <td><img src={iconArea} style={{ height: "1em", verticalAlign: "middle", marginRight: "6px" }} /></td>
+            <td>
+              <img
+                src={iconArea}
+                style={{
+                  height: "1em",
+                  verticalAlign: "middle",
+                  marginRight: "6px",
+                }}
+              />
+            </td>
             <td>{formatNumber(props.AREA)} км²</td>
           </tr>
           <tr>
-            <td><img src={iconPopulation} style={{ height: "1em", verticalAlign: "middle", marginRight: "6px" }} /></td>
+            <td>
+              <img
+                src={iconPopulation}
+                style={{
+                  height: "1em",
+                  verticalAlign: "middle",
+                  marginRight: "6px",
+                }}
+              />
+            </td>
             <td>{formatNumber(props.POPULATION)} чел.</td>
           </tr>
           <tr>
-            <td><img src={iconCenter} style={{ height: "1em", verticalAlign: "middle", marginRight: "6px" }} /></td>
+            <td>
+              <img
+                src={iconCenter}
+                style={{
+                  height: "1em",
+                  verticalAlign: "middle",
+                  marginRight: "6px",
+                }}
+              />
+            </td>
             <td>{props.CENTER}</td>
           </tr>
         </tbody>
@@ -66,7 +94,7 @@ export default function CustomPopup({ props, type, onBackToLands }) {
         {isLand ? (
           <button className="show-communes-btn">Показать общины</button>
         ) : (
-          <button onClick={onBackToLands}>Вернуться к землям</button>
+          <button className="back-to-lands-btn">Вернуться к землям</button>
         )}
       </div>
     </div>
