@@ -16,7 +16,7 @@ export default function CustomPopup({ props, type }) {
 
   return (
     <div style={{ whiteSpace: "nowrap" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
         <div style={{ minWidth: "60px", flexShrink: 0 }}>
           <img
             src={getHeraldryPath(props.OBJECTID)}
