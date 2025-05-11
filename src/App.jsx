@@ -37,6 +37,7 @@ function ModelMap() {
   const mapRef = useRef(null);
   const mapBoundsRef = useRef(null);
   const landLayersRef = useRef({});
+  const landsLayerRef = useRef(null);
 
   useEffect(() => {
     const map = mapRef.current;
