@@ -11,21 +11,11 @@ const formatNumber = (num) => {
   return num?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 };
 
-export default function CustomPopup({ props, type, onShowCommunes }) {
+export default function CustomPopup({ props, type }) {
   const isLand = type === "land";
 
-  const handleClick = () => {
-  window.dispatchEvent(
-    new CustomEvent(isLand ? "showCommunes" : "backToLands", {
-      detail: { landId: props.OBJECTID }
-    })
-  );
-  document.querySelector(".leaflet-popup-close-button")?.click();
-};
-
   return (
-    <div style={{ whiteSpace: "nowrap"}}>
-      {/* Заголовок с гербом слева */}
+    <div style={{ whiteSpace: "nowrap" }}>
       <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
         <div style={{ minWidth: "50px", flexShrink: 0 }}>
           <img
@@ -35,14 +25,8 @@ export default function CustomPopup({ props, type, onShowCommunes }) {
             onError={(e) => (e.target.style.display = "none")}
           />
         </div>
-        <div style={{ flex: 1, whiteSpace: "nowrap"}}>
-          <div
-            style={{
-              fontWeight: "bold",
-              fontSize: "1.2rem",
-              color: "#000",
-            }}
-          >
+        <div style={{ flex: 1, whiteSpace: "nowrap" }}>
+          <div style={{ fontWeight: "bold", fontSize: "1.2rem", color: "#000" }}>
             {props.NAMEOBJBEL}
           </div>
           <div style={{ fontStyle: "italic", fontSize: "1.1rem", color: "#555" }}>
@@ -56,7 +40,6 @@ export default function CustomPopup({ props, type, onShowCommunes }) {
 
       <hr />
 
-      {/* Таблица с иконками */}
       <table
         style={{
           borderCollapse: "collapse",
@@ -107,18 +90,13 @@ export default function CustomPopup({ props, type, onShowCommunes }) {
         </tbody>
       </table>
 
-      {/* Кнопка */}
-<button onClick={() => {
-  if (isLand) {
-    window.dispatchEvent(new CustomEvent("showCommunes", {
-      detail: { landId: props.OBJECTID, bounds: props.bounds }
-    }));
-  } else {
-    window.dispatchEvent(new CustomEvent("backToLands"));
-  }
-}}>
-        {isLand ? "Показать общины" : "Вернуться к землям"}
-      </button>
+      <div style={{ marginTop: "10px" }}>
+        {isLand ? (
+          <button className="show-communes-btn">Показать общины</button>
+        ) : (
+          <button className="back-to-lands-btn">Вернуться к землям</button>
+        )}
+      </div>
     </div>
   );
 }
