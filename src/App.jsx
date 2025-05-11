@@ -133,7 +133,7 @@ function ModelMap() {
     layer.bindPopup(html, { maxWidth: "auto", minWidth: 100 });
   };
 
-const handleCommuneClick = (feature, layer) => {
+  const handleCommuneClick = (feature, layer) => {
   const html = ReactDOMServer.renderToString(
     <CustomPopup props={feature.properties} type="commune" />
   );
@@ -150,6 +150,7 @@ const handleCommuneClick = (feature, layer) => {
     }
   });
 };
+
 
   const html = ReactDOMServer.renderToString(<CustomPopup props={feature.properties} type="commune" />);
     layer.bindPopup(html, { maxWidth: "auto", minWidth: 100 });
