@@ -139,12 +139,8 @@ setTimeout(() => {
       window.dispatchEvent(new CustomEvent("backToLands"));
       document.querySelector(".leaflet-popup-close-button")?.click();
 
-      const map = mapRef.current;
-      const landLayer = landsLayerRef.current;
-      if (map && landLayer) {
-        const bounds = landLayer.getBounds();
-        map.flyToBounds(bounds, { animate: true, duration: 0.75 });
-      }
+      // Просто обновим bounds — FitBounds всё сделает
+      setBounds(mapBoundsRef.current);
     });
   }
 }, 0);
