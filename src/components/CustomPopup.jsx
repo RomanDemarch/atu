@@ -95,10 +95,10 @@ export default function CustomPopup({ props, type }) {
           <button className="show-communes-btn"
       style={{
         padding: "8px 16px",
-        border: "2px solid #222222",
+        border: "2px solid #444444",
         borderRadius: "8px",
         backgroundColor: "#fff",
-        color: "#222222",
+        color: "#444444",
         fontWeight: "bold",
         cursor: "pointer"
       }}
