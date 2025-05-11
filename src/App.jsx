@@ -79,7 +79,7 @@ function ModelMap() {
 
   const communeStyle = {
     color: "#222222",
-    weight: 2,
+    weight: 1,
     fillOpacity: 0,
   };
 
@@ -114,24 +114,32 @@ function ModelMap() {
     });
   };
 
+  import { createRoot } from "react-dom/client";
 
 const handleCommuneClick = (feature, layer) => {
-  const html = ReactDOMServer.renderToString(
-    <CustomPopup props={feature.properties} type="commune" />
+  const popupNode = document.createElement("div");
+
+  const root = createRoot(popupNode);
+  root.render(
+    <CustomPopup
+      props={feature.properties}
+      type="commune"
+      onBackToLands={() => {
+        window.dispatchEvent(new CustomEvent("backToLands"));
+        mapRef.current?.closePopup();
+      }}
+    />
   );
 
-  // Привяжем, но НЕ открываем через bindPopup
-  layer.bindPopup(html, { maxWidth: "auto", minWidth: 100 });
+  layer.bindPopup(popupNode, { maxWidth: "auto", minWidth: 100 });
+};
+    const html = ReactDOMServer.renderToString(
+      <CustomPopup props={feature.properties} type="commune" />
+    );
 
-  layer.on("click", () => {
-    // Закрываем все попапы вручную
-    mapRef.current?.closePopup();
+    layer.bindPopup(html, { maxWidth: "auto", minWidth: 100 });
 
-    // Открываем только для этого слоя
-    layer.openPopup();
-
-    // Навешиваем обработчик после отрисовки нового попапа
-    setTimeout(() => {
+    layer.on("popupopen", () => {
       const button = document.querySelector(".back-to-lands-btn");
       if (button) {
         button.addEventListener("click", () => {
@@ -139,9 +147,8 @@ const handleCommuneClick = (feature, layer) => {
           document.querySelector(".leaflet-popup-close-button")?.click();
         });
       }
-    }, 0);
-  });
-};
+    });
+  };
 
   const filterCommunes = (communes, parentId) =>
     communes.features.filter((c) => c.properties.PARENT === parentId);
@@ -159,13 +166,18 @@ const handleCommuneClick = (feature, layer) => {
           attribution='&copy; <a href="https://www.openstreetmap.org">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-{view === "lands" && (
-  <GeoJSON
-    data={lands}
-    style={landStyle}
-    onEachFeature={handleLandClick}
-  />
-)}
+        <GeoJSON
+  data={lands}
+  style={landStyle}
+  onEachFeature={(feature, layer) => {
+    if (view === "lands") {
+      handleLandClick(feature, layer);
+    } else {
+      layer.off();
+      layer.unbindPopup();
+    }
+  }}
+/>
         {view === "lands" && false && (
           <GeoJSON data={lands} style={landStyle} onEachFeature={handleLandClick} />
         )}
