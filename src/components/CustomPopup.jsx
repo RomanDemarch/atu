@@ -98,7 +98,7 @@ export default function CustomPopup({ props, type }) {
         border: "2px solid #DD2233",
         borderRadius: "8px",
         backgroundColor: "#fff",
-        color: "#DD2233",
+        color: "#222",
         fontWeight: "bold",
         cursor: "pointer"
       }}
