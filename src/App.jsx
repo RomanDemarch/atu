@@ -11,7 +11,7 @@ import landOutlines from './data/lands-outline.json';
 import L from "leaflet";
 
 // Import the Leaflet MapTiler Plugin
-import "@maptiler/leaflet-maptilersdk";
+import { MaptilerLayer } from "@maptiler/leaflet-maptilersdk";
 
 const map = L.map('map', {
   center: L.latLng(0, 0),
