@@ -147,7 +147,13 @@ function ModelMap() {
           attribution='&copy; <a href="https://www.openstreetmap.org">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {view === "lands" && (
+        <GeoJSON
+          data={lands}
+          style={landStyle}
+          onEachFeature={view === "lands" ? handleLandClick : undefined}
+          interactive={view === "lands"}
+        />
+        {view === "lands" && false && (
           <GeoJSON data={lands} style={landStyle} onEachFeature={handleLandClick} />
         )}
         {view === "communes" && selectedLand && (
