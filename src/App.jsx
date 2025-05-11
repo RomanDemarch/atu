@@ -115,6 +115,7 @@ function ModelMap() {
   };
 
   const handleCommuneClick = (feature, layer) => {
+      mapRef.current?.closePopup();
     const html = ReactDOMServer.renderToString(
       <CustomPopup props={feature.properties} type="commune" />
     );
