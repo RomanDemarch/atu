@@ -7,7 +7,10 @@ import ReactDOMServer from "react-dom/server";
 import CustomPopup from "@/components/CustomPopup";
 import lands from "./data/Lands.json";
 import communes from "./data/Communes.json";
+import getCustomPopupHTML from "./components/CustomPopup";
 
+const html = getCustomPopupHTML(popupProps, "land");
+layer.bindPopup(html).openPopup();
 
 function FitBounds({ bounds }) {
   const map = useMap();
