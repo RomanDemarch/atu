@@ -95,10 +95,10 @@ export default function CustomPopup({ props, type }) {
           <button className="show-communes-btn"
       style={{
         padding: "8px 16px",
-        border: "2px solid #666",
+        border: "2px solid #999",
         borderRadius: "8px",
         backgroundColor: "#fff",
-        color: "#666",
+        color: "#999",
         fontWeight: "bold",
         cursor: "pointer"
       }}
@@ -107,10 +107,10 @@ export default function CustomPopup({ props, type }) {
           <button className="back-to-lands-btn"
       style={{
         padding: "8px 16px",
-        border: "2px solid #DD2233",
+        border: "2px solid #FF8899",
         borderRadius: "8px",
         backgroundColor: "#fff",
-        color: "#DD2233",
+        color: "#FF8899",
         fontWeight: "bold",
         cursor: "pointer"
       }}
