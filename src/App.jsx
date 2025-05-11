@@ -148,18 +148,13 @@ function ModelMap() {
           attribution='&copy; <a href="https://www.openstreetmap.org">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <GeoJSON
-  data={lands}
-  style={landStyle}
-  onEachFeature={(feature, layer) => {
-    if (view === "lands") {
-      handleLandClick(feature, layer);
-    } else {
-      layer.off();
-      layer.unbindPopup();
-    }
-  }}
-/>
+{view === "lands" && (
+  <GeoJSON
+    data={lands}
+    style={landStyle}
+    onEachFeature={handleLandClick}
+  />
+)}
         {view === "lands" && false && (
           <GeoJSON data={lands} style={landStyle} onEachFeature={handleLandClick} />
         )}
