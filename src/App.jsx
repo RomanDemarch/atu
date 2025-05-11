@@ -8,6 +8,7 @@ import CustomPopup from "@/components/CustomPopup";
 import lands from "./data/Lands.json";
 import communes from "./data/Communes.json";
 import landOutlines from './data/lands-outline.json';
+import { createRoot } from "react-dom/client";
 
 function FitBounds({ bounds }) {
   const map = useMap();
@@ -94,10 +95,8 @@ function ModelMap() {
     });
 
           }
-    };
+    });
   };
-
-  import { createRoot } from "react-dom/client";
 
 const handleCommuneClick = (feature, layer) => {
   const popupNode = document.createElement("div");
