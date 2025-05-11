@@ -90,7 +90,7 @@ export default function CustomPopup({ props, type }) {
         </tbody>
       </table>
 
-      <div style={{ marginTop: "10px" }}>
+      <div style={{ marginTop: "16px", textAlign: "center" }}>
         {isLand ? (
           <button className="show-communes-btn"
       style={{
