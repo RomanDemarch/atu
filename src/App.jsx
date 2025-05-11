@@ -154,7 +154,7 @@ function ModelMap() {
 
   const html = ReactDOMServer.renderToString(<CustomPopup props={feature.properties} type="commune" />);
     layer.bindPopup(html, { maxWidth: "auto", minWidth: 100 });
-  };
+  ;
 
   const filterCommunes = (communes, parentId) =>
     communes.features.filter((c) => c.properties.PARENT === parentId);
