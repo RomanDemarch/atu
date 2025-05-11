@@ -102,7 +102,7 @@ export default function CustomPopup({ props, type }) {
         fontWeight: "bold",
         cursor: "pointer"
       }}
-          >Грамады/Communes</button>
+          >Грамады | Communes</button>
         ) : (
           <button className="back-to-lands-btn"
       style={{
@@ -114,7 +114,7 @@ export default function CustomPopup({ props, type }) {
         fontWeight: "bold",
         cursor: "pointer"
       }}
-          >Да земляў/To lands</button>
+          >Да земляў | To lands</button>
         )}
       </div>
     </div>
