@@ -114,23 +114,31 @@ function ModelMap() {
     });
   };
 
+
   const handleCommuneClick = (feature, layer) => {
-    const html = ReactDOMServer.renderToString(
-      <CustomPopup props={feature.properties} type="commune" />
-    );
+  const html = ReactDOMServer.renderToString(
+    <CustomPopup props={feature.properties} type="commune" />
+  );
 
-    layer.bindPopup(html, { maxWidth: "auto", minWidth: 100 });
+  layer.bindPopup(html, { maxWidth: "auto", minWidth: 100 });
 
-    layer.on("popupopen", () => {
-      const button = document.querySelector(".back-to-lands-btn");
-      if (button) {
-        button.addEventListener("click", () => {
-          window.dispatchEvent(new CustomEvent("backToLands"));
-          document.querySelector(".leaflet-popup-close-button")?.click();
-        });
-      }
+  layer.on("popupopen", () => {
+    // Очистить предыдущие обработчики кнопки, если они остались
+    document.querySelectorAll(".back-to-lands-btn").forEach((btn) => {
+      const clone = btn.cloneNode(true);
+      btn.replaceWith(clone);
     });
-  };
+
+    // Назначить новый обработчик
+    const button = document.querySelector(".back-to-lands-btn");
+    if (button) {
+      button.addEventListener("click", () => {
+        window.dispatchEvent(new CustomEvent("backToLands"));
+        document.querySelector(".leaflet-popup-close-button")?.click();
+      });
+    }
+  });
+};
 
   const filterCommunes = (communes, parentId) =>
     communes.features.filter((c) => c.properties.PARENT === parentId);
