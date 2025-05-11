@@ -79,7 +79,7 @@ function ModelMap() {
 
   const communeStyle = {
     color: "#222222",
-    weight: 1,
+    weight: 2,
     fillOpacity: 0,
   };
 
