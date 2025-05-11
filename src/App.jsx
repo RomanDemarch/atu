@@ -8,7 +8,6 @@ import CustomPopup from "@/components/CustomPopup";
 import lands from "./data/Lands.json";
 import communes from "./data/Communes.json";
 import landOutlines from './data/lands-outline.json';
-import { createRoot } from "react-dom/client";
 
 function FitBounds({ bounds }) {
   const map = useMap();
@@ -94,27 +93,11 @@ function ModelMap() {
       },
     });
 
-    const html = ReactDOMServer.renderToString(
-      <CustomPopup props={feature.properties} type="land" />
-    );
-
-    layer.bindPopup(html, { maxWidth: "auto", minWidth: 100 });
-
-    layer.on("popupopen", () => {
-      const button = document.querySelector(".show-communes-btn");
-      if (button) {
-        button.addEventListener("click", () => {
-          window.dispatchEvent(
-            new CustomEvent("showCommunes", {
-              detail: { landId: feature.properties.OBJECTID },
-            })
-          );
-          document.querySelector(".leaflet-popup-close-button")?.click();
-        });
-      }
+          }
     });
   };
 
+  import { createRoot } from "react-dom/client";
 
 const handleCommuneClick = (feature, layer) => {
   const popupNode = document.createElement("div");
@@ -133,21 +116,9 @@ const handleCommuneClick = (feature, layer) => {
 
   layer.bindPopup(popupNode, { maxWidth: "auto", minWidth: 100 });
 };
-    const html = ReactDOMServer.renderToString(
-      <CustomPopup props={feature.properties} type="commune" />
-    );
-
-    layer.bindPopup(html, { maxWidth: "auto", minWidth: 100 });
-
-    layer.on("popupopen", () => {
-      const button = document.querySelector(".back-to-lands-btn");
-      if (button) {
-        button.addEventListener("click", () => {
-          window.dispatchEvent(new CustomEvent("backToLands"));
-          document.querySelector(".leaflet-popup-close-button")?.click();
-        });
-      }
+          }
     });
+  };
 
   const filterCommunes = (communes, parentId) =>
     communes.features.filter((c) => c.properties.PARENT === parentId);
