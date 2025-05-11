@@ -148,7 +148,6 @@ const handleCommuneClick = (feature, layer) => {
         });
       }
     });
-  };
 
   const filterCommunes = (communes, parentId) =>
     communes.features.filter((c) => c.properties.PARENT === parentId);
@@ -158,7 +157,6 @@ const handleCommuneClick = (feature, layer) => {
     [57.0, 36.0],
   ];
 
-function ModelMap() {
   return (
     <div className="h-screen w-full">
       <MapContainer center={[53.7, 27.9]} zoom={7} minZoom={6} maxBounds={maxBounds} maxBoundsViscosity={1.0} className="h-full w-full z-0"
