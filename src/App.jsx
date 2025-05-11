@@ -114,7 +114,7 @@ function ModelMap() {
     });
   };
 
-  import  createRoot  from "react-dom/client";
+  import { createRoot } from "react-dom/client";
 
 const handleCommuneClick = (feature, layer) => {
   const popupNode = document.createElement("div");
