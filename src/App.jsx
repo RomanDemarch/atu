@@ -140,8 +140,9 @@ setTimeout(() => {
 
       // Зум ко всей стране
       const map = mapRef.current;
-      const bounds = mapBoundsRef.current;
+      const layer = landsLayerRef.current;
       if (map && bounds) {
+        const bounds = layer.getBounds();
         map.flyToBounds(bounds, { animate: true, duration: 0.75 });
       }
     });
@@ -174,7 +175,7 @@ setTimeout(() => {
   />
 )}
         {view === "lands" && false && (
-          <GeoJSON data={lands} style={landStyle} onEachFeature={handleLandClick} />
+          <GeoJSON data={lands} style={landStyle} onEachFeature={handleLandClick} ref={landsLayerRef}/>
         )}
         {view === "communes" && selectedLand && (
           <GeoJSON
