@@ -115,28 +115,31 @@ function ModelMap() {
   };
 
 
-  const handleCommuneClick = (feature, layer) => {
+const handleCommuneClick = (feature, layer) => {
   const html = ReactDOMServer.renderToString(
     <CustomPopup props={feature.properties} type="commune" />
   );
 
+  // Привяжем, но НЕ открываем через bindPopup
   layer.bindPopup(html, { maxWidth: "auto", minWidth: 100 });
 
-  layer.on("popupopen", () => {
-    // Очистить предыдущие обработчики кнопки, если они остались
-    document.querySelectorAll(".back-to-lands-btn").forEach((btn) => {
-      const clone = btn.cloneNode(true);
-      btn.replaceWith(clone);
-    });
+  layer.on("click", () => {
+    // Закрываем все попапы вручную
+    mapRef.current?.closePopup();
 
-    // Назначить новый обработчик
-    const button = document.querySelector(".back-to-lands-btn");
-    if (button) {
-      button.addEventListener("click", () => {
-        window.dispatchEvent(new CustomEvent("backToLands"));
-        document.querySelector(".leaflet-popup-close-button")?.click();
-      });
-    }
+    // Открываем только для этого слоя
+    layer.openPopup();
+
+    // Навешиваем обработчик после отрисовки нового попапа
+    setTimeout(() => {
+      const button = document.querySelector(".back-to-lands-btn");
+      if (button) {
+        button.addEventListener("click", () => {
+          window.dispatchEvent(new CustomEvent("backToLands"));
+          document.querySelector(".leaflet-popup-close-button")?.click();
+        });
+      }
+    }, 0);
   });
 };
 
