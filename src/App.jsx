@@ -78,7 +78,7 @@ function ModelMap() {
   };
 
   const communeStyle = {
-    color: "#222222",
+    color: "#333",
     weight: 2,
     fillOpacity: 0,
   };
