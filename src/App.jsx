@@ -23,7 +23,7 @@ function ResetViewControl({ boundsRef }) {
       div.style.backgroundColor = "white";
       div.style.cursor = "pointer";
       div.style.padding = "4px";
-      div.style.fontSize = "18px";
+      div.style.fontSize = "30px";
       div.style.textAlign = "center";
       div.style.lineHeight = "24px";
 
