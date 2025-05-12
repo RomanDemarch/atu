@@ -10,7 +10,7 @@ import communes from "./data/Communes.json";
 import landOutlines from './data/lands-outline.json';
 import L from "leaflet";
 
-function ResetViewControl({ boundsRef }) {
+export default function ResetViewControl({ boundsRef }) {
   const map = useMap();
 
   useEffect(() => {
@@ -18,19 +18,21 @@ function ResetViewControl({ boundsRef }) {
 
     control.onAdd = () => {
       const div = L.DomUtil.create("div", "leaflet-bar leaflet-control leaflet-control-custom");
-
       div.innerHTML = "⤢";
       div.title = "Сброс масштаба";
       div.style.backgroundColor = "white";
       div.style.cursor = "pointer";
       div.style.padding = "4px";
-      div.style.fontSize = "27px";
+      div.style.fontSize = "18px";
       div.style.textAlign = "center";
+      div.style.lineHeight = "24px";
 
       div.onclick = () => {
         const bounds = boundsRef.current;
-        if (bounds) {
+        if (map && bounds) {
           map.fitBounds(bounds, { animate: true, duration: 0.75 });
+        } else {
+          console.warn("Сброс не сработал: bounds пустой");
         }
       };
 
@@ -38,10 +40,7 @@ function ResetViewControl({ boundsRef }) {
     };
 
     control.addTo(map);
-
-    return () => {
-      control.remove();
-    };
+    return () => control.remove();
   }, [map, boundsRef]);
 
   return null;
