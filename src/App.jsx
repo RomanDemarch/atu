@@ -8,6 +8,44 @@ import CustomPopup from "@/components/CustomPopup";
 import lands from "./data/Lands.json";
 import communes from "./data/Communes.json";
 import landOutlines from './data/lands-outline.json';
+import L from "leaflet";
+
+function ResetViewControl({ boundsRef }) {
+  const map = useMap();
+
+  useEffect(() => {
+    const control = L.control({ position: "topleft" });
+
+    control.onAdd = () => {
+      const div = L.DomUtil.create("div", "leaflet-bar leaflet-control leaflet-control-custom");
+
+      div.innerHTML = "⤢";
+      div.title = "Сброс масштаба";
+      div.style.backgroundColor = "white";
+      div.style.cursor = "pointer";
+      div.style.padding = "4px";
+      div.style.fontSize = "18px";
+      div.style.textAlign = "center";
+
+      div.onclick = () => {
+        const bounds = boundsRef.current;
+        if (bounds) {
+          map.fitBounds(bounds, { animate: true, duration: 0.75 });
+        }
+      };
+
+      return div;
+    };
+
+    control.addTo(map);
+
+    return () => {
+      control.remove();
+    };
+  }, [map, boundsRef]);
+
+  return null;
+}
 
 function FitBounds({ bounds }) {
   const map = useMap();
@@ -199,6 +237,7 @@ setTimeout(() => {
 )}
 
         <FitBounds bounds={bounds} />
+        <ResetViewControl boundsRef={mapBoundsRef} />
       </MapContainer>
     </div>
   );
