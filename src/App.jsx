@@ -77,12 +77,13 @@ function ModelMap() {
   const landLayersRef = useRef({});
   const landsLayerRef = useRef(null);
 
-  useEffect(() => {
-    const map = mapRef.current;
-    if (map && !mapBoundsRef.current) {
-      mapBoundsRef.current = map.getBounds();
-    }
-  }, []);
+useEffect(() => {
+  const map = mapRef.current;
+  if (map && lands.features?.length && !mapBoundsRef.current) {
+    const geojsonLayer = L.geoJSON(lands);
+    mapBoundsRef.current = geojsonLayer.getBounds();
+  }
+}, []);
 
   useEffect(() => {
     const showHandler = (e) => {
