@@ -24,7 +24,7 @@ function ResetViewControl({ boundsRef }) {
       div.style.backgroundColor = "white";
       div.style.cursor = "pointer";
       div.style.padding = "4px";
-      div.style.fontSize = "24px";
+      div.style.fontSize = "27px";
       div.style.textAlign = "center";
 
       div.onclick = () => {
