@@ -10,7 +10,7 @@ import communes from "./data/Communes.json";
 import landOutlines from './data/lands-outline.json';
 import L from "leaflet";
 
-export default function ResetViewControl({ boundsRef }) {
+function ResetViewControl({ boundsRef }) {
   const map = useMap();
 
   useEffect(() => {
