@@ -177,11 +177,18 @@ setTimeout(() => {
   const button = document.querySelector(".back-to-lands-btn");
   if (button) {
     button.addEventListener("click", () => {
-      window.dispatchEvent(new CustomEvent("backToLands"));
+      // Закрываем попап
       document.querySelector(".leaflet-popup-close-button")?.click();
 
-      // Просто обновим bounds — FitBounds всё сделает
-      setBounds(mapBoundsRef.current);
+      // Меняем представление и очищаем выбор
+      setSelectedLand(null);
+      setView("lands");
+
+      // Центруем карту вручную
+      const map = mapRef.current;
+      if (map) {
+        map.setView([53.7, 27.9], 6, { animate: true, duration: 0.75 });
+      }
     });
   }
 }, 0);
