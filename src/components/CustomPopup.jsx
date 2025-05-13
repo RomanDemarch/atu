@@ -36,7 +36,6 @@ export default function CustomPopup({ props, type }) {
             {props.NAMEOBJENG}
           </div>
         </div>
-      </div>
 
       <hr />
 
@@ -44,7 +43,7 @@ export default function CustomPopup({ props, type }) {
         style={{
           borderCollapse: "collapse",
           marginTop: "8px",
-          tableLayout: "auto", 
+          tableLayout: "fixed", 
           fontSize: "1rem",
           width: "100%",
         }}
@@ -94,6 +93,7 @@ export default function CustomPopup({ props, type }) {
           </tr>
         </tbody>
       </table>
+    </div>
 
       <div style={{ marginTop: "16px", textAlign: "center" }}>
         {isLand ? (
