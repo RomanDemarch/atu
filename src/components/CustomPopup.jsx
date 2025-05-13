@@ -36,9 +36,11 @@ export default function CustomPopup({ props, type }) {
             {props.NAMEOBJENG}
           </div>
         </div>
+      </div>
 
       <hr />
-
+      
+    <div style={{ whiteSpace: "nowrap" }}>
       <table
         style={{
           borderCollapse: "collapse",
