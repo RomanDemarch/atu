@@ -53,7 +53,7 @@ export default function CustomPopup({ props, type }) {
               <img
                 src={iconArea}
                 style={{
-                  height: "1em",
+                  width: "20px",
                   verticalAlign: "middle",
                   marginRight: "6px",
                 }}
@@ -66,7 +66,7 @@ export default function CustomPopup({ props, type }) {
               <img
                 src={iconPopulation}
                 style={{
-                  height: "1em",
+                  width: "20px",
                   verticalAlign: "middle",
                   marginRight: "6px",
                 }}
@@ -79,7 +79,7 @@ export default function CustomPopup({ props, type }) {
               <img
                 src={iconCenter}
                 style={{
-                  height: "1em",
+                  width: "20px",
                   verticalAlign: "middle",
                   marginRight: "6px",
                 }}
