@@ -50,46 +50,43 @@ export default function CustomPopup({ props, type }) {
       >
         <tbody>
           <tr>
-            <td style={{ width: "1.2em", verticalAlign: "top" }}>
+            <td style={{ width: "1.5em", verticalAlign: "top" }}>
               <img
                 src={iconArea}
                 style={{
+                  width: "1em",
                   height: "1em",
-                  verticalAlign: "middle",
-                  marginRight: "6px",
-                  objectFit: "contain", 
-                  flexShrink: 0
+                  objectFit: "contain",
                 }}
+                alt=""
               />
             </td>
             <td>{formatNumber(props.AREA)} км²</td>
           </tr>
           <tr>
-            <td style={{ width: "1.2em", verticalAlign: "top" }}>
+            <td style={{ width: "1.5em", verticalAlign: "top" }}>
               <img
                 src={iconPopulation}
                 style={{
+                  width: "1em",
                   height: "1em",
-                  verticalAlign: "middle",
-                  marginRight: "6px",
-                  objectFit: "contain", 
-                  flexShrink: 0
+                  objectFit: "contain",
                 }}
+                alt=""
               />
             </td>
             <td>{formatNumber(props.POPULATION)} чал. (2019)</td>
           </tr>
           <tr>
-            <td style={{ width: "1.2em", verticalAlign: "top" }}>
+            <td style={{ width: "1.5em", verticalAlign: "top" }}>
               <img
                 src={iconCenter}
                 style={{
+                  width: "1em",
                   height: "1em",
-                  verticalAlign: "middle",
-                  marginRight: "6px",
-                  objectFit: "contain", 
-                  flexShrink: 0
+                  objectFit: "contain",
                 }}
+                alt=""
               />
             </td>
             <td>{props.CENTER}</td>
