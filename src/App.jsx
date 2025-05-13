@@ -168,7 +168,7 @@ const handleCommuneClick = (feature, layer) => {
   );
 
   // Привяжем, но НЕ открываем через bindPopup
-  layer.bindPopup(html, { minWidth: 230 });
+  layer.bindPopup(html, { maxWidth: "auto", minWidth: 230 });
 
   layer.on("click", () => {
     // Закрываем все попапы вручную
