@@ -40,7 +40,6 @@ export default function CustomPopup({ props, type }) {
 
       <hr />
       
-    <div style={{ whiteSpace: "nowrap" }}>
       <table
         style={{
           borderCollapse: "collapse",
@@ -95,7 +94,6 @@ export default function CustomPopup({ props, type }) {
           </tr>
         </tbody>
       </table>
-    </div>
 
       <div style={{ marginTop: "16px", textAlign: "center" }}>
         {isLand ? (
