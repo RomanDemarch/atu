@@ -28,7 +28,7 @@ function ResetViewControl() {
       div.style.lineHeight = "24px";
 
       div.onclick = () => {
-        map.setView([53.7, 27.9], 6, { animate: true, duration: 0.75 });
+        map.setView([53.7, 27.9], 7, { animate: true, duration: 0.75 });
       };
 
       return div;
