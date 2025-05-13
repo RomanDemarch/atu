@@ -10,7 +10,7 @@ import communes from "./data/Communes.json";
 import landOutlines from './data/lands-outline.json';
 import L from "leaflet";
 
-function ResetViewControl({ boundsRef }) {
+function ResetViewControl() {
   const map = useMap();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function ResetViewControl({ boundsRef }) {
     control.onAdd = () => {
       const div = L.DomUtil.create("div", "leaflet-bar leaflet-control leaflet-control-custom");
       div.innerHTML = "⤢";
-      div.title = "Сброс масштаба";
+      div.title = "Сброс к начальному положению";
       div.style.backgroundColor = "white";
       div.style.cursor = "pointer";
       div.style.padding = "4px";
@@ -28,12 +28,7 @@ function ResetViewControl({ boundsRef }) {
       div.style.lineHeight = "24px";
 
       div.onclick = () => {
-        const bounds = boundsRef.current;
-        if (map && bounds) {
-          map.fitBounds(bounds, { animate: true, duration: 0.75 });
-        } else {
-          console.warn("Сброс не сработал: bounds пустой");
-        }
+        map.setView([53.7, 27.9], 6, { animate: true, duration: 0.75 });
       };
 
       return div;
@@ -41,7 +36,7 @@ function ResetViewControl({ boundsRef }) {
 
     control.addTo(map);
     return () => control.remove();
-  }, [map, boundsRef]);
+  }, [map]);
 
   return null;
 }
@@ -237,7 +232,7 @@ setTimeout(() => {
 )}
 
         <FitBounds bounds={bounds} />
-        <ResetViewControl boundsRef={mapBoundsRef} />
+        <ResetViewControl />
       </MapContainer>
     </div>
   );
