@@ -162,29 +162,36 @@ const handleCommuneClick = (feature, layer) => {
     <CustomPopup props={feature.properties} type="commune" />
   );
 
-  layer.bindPopup(html, { minWidth: 230 });
+  // Привяжем, но НЕ открываем через bindPopup
+  layer.bindPopup(html, { maxWidth: "auto", minWidth: 230 });
 
   layer.on("click", () => {
+    // Закрываем все попапы вручную
     mapRef.current?.closePopup();
-    layer.openPopup();
-  });
 
-  layer.on("popupopen", () => {
-    const button = document.querySelector(".back-to-lands-btn");
-    if (button) {
-      button.addEventListener("click", () => {
-        console.log("Нажата кнопка сброса"); // тест
-        document.querySelector(".leaflet-popup-close-button")?.click();
-        setSelectedLand(null);
-        setView("lands");
-        const map = mapRef.current;
-        if (map) {
-          map.setView([53.7, 27.9], 6, { animate: true, duration: 0.75 });
-        }
-      });
-    } else {
-      console.warn("Кнопка не найдена");
-    }
+    // Открываем только для этого слоя
+    layer.openPopup();
+
+    // Навешиваем обработчик после отрисовки нового попапа
+setTimeout(() => {
+  const button = document.querySelector(".back-to-lands-btn");
+  if (button) {
+    button.addEventListener("click", () => {
+      // Закрываем попап
+      document.querySelector(".leaflet-popup-close-button")?.click();
+
+      // Меняем представление и очищаем выбор
+      setSelectedLand(null);
+      setView("lands");
+
+      // Центруем карту вручную
+      const map = mapRef.current;
+      if (map) {
+        map.setView([53.7, 27.9], 6, { animate: true, duration: 0.75 });
+      }
+    });
+  }
+}, 0);
   });
 };
 
