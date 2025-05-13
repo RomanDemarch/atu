@@ -72,7 +72,7 @@ export default function CustomPopup({ props, type }) {
                 }}
               />
             </td>
-            <td>{formatNumber(props.POPULATION)} чел.</td>
+            <td>{formatNumber(props.POPULATION)} чал. (2019)</td>
           </tr>
           <tr>
             <td>
