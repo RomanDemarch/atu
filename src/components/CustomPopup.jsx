@@ -42,15 +42,15 @@ export default function CustomPopup({ props, type }) {
 
       <table
         style={{
-          display: "flex",
           borderCollapse: "collapse",
           marginTop: "8px",
           fontSize: "1rem",
+          width: "100%",
         }}
       >
         <tbody>
           <tr>
-            <td style={{ width: "1.2em", flexShrink: 0 }}>
+            <td style={{ width: "1.2em", verticalAlign: "top" }}>
               <img
                 src={iconArea}
                 style={{
@@ -65,7 +65,7 @@ export default function CustomPopup({ props, type }) {
             <td>{formatNumber(props.AREA)} км²</td>
           </tr>
           <tr>
-            <td style={{ width: "1.2em", flexShrink: 0 }}>
+            <td style={{ width: "1.2em", verticalAlign: "top" }}>
               <img
                 src={iconPopulation}
                 style={{
@@ -80,7 +80,7 @@ export default function CustomPopup({ props, type }) {
             <td>{formatNumber(props.POPULATION)} чал. (2019)</td>
           </tr>
           <tr>
-            <td style={{ width: "1.2em", flexShrink: 0 }}>
+            <td style={{ width: "1.2em", verticalAlign: "top" }}>
               <img
                 src={iconCenter}
                 style={{
