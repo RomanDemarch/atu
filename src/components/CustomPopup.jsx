@@ -53,9 +53,11 @@ export default function CustomPopup({ props, type }) {
               <img
                 src={iconArea}
                 style={{
-                  height: "1rem",
+                  height: "1em",
                   verticalAlign: "middle",
                   marginRight: "6px",
+                  objectFit: "contain", 
+                  flexShrink: 0
                 }}
               />
             </td>
@@ -66,9 +68,11 @@ export default function CustomPopup({ props, type }) {
               <img
                 src={iconPopulation}
                 style={{
-                  height: "1rem",
+                  height: "1em",
                   verticalAlign: "middle",
                   marginRight: "6px",
+                  objectFit: "contain", 
+                  flexShrink: 0
                 }}
               />
             </td>
@@ -79,9 +83,11 @@ export default function CustomPopup({ props, type }) {
               <img
                 src={iconCenter}
                 style={{
-                  height: "1rem",
+                  height: "1em",
                   verticalAlign: "middle",
                   marginRight: "6px",
+                  objectFit: "contain", 
+                  flexShrink: 0
                 }}
               />
             </td>
