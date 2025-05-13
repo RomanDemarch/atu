@@ -49,11 +49,10 @@ export default function CustomPopup({ props, type }) {
       >
         <tbody>
           <tr>
-            <td>
+            <td width="19px">
               <img
                 src={iconArea}
                 style={{
-                  width: "1rem",
                   height: "1rem",
                   verticalAlign: "middle",
                   marginRight: "6px",
@@ -63,11 +62,10 @@ export default function CustomPopup({ props, type }) {
             <td>{formatNumber(props.AREA)} км²</td>
           </tr>
           <tr>
-            <td>
+            <td width="19px">
               <img
                 src={iconPopulation}
                 style={{
-                  width: "1rem",
                   height: "1rem",
                   verticalAlign: "middle",
                   marginRight: "6px",
@@ -77,11 +75,10 @@ export default function CustomPopup({ props, type }) {
             <td>{formatNumber(props.POPULATION)} чал. (2019)</td>
           </tr>
           <tr>
-            <td>
+            <td width="19px">
               <img
                 src={iconCenter}
                 style={{
-                  width: "1rem",
                   height: "1rem",
                   verticalAlign: "middle",
                   marginRight: "6px",
