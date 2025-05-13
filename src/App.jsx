@@ -144,7 +144,7 @@ useEffect(() => {
       <CustomPopup props={feature.properties} type="land" />
     );
 
-    layer.bindPopup(html, { minWidth: 330 });
+    layer.bindPopup(html, { minWidth: 230 });
 
     layer.on("popupopen", () => {
       const button = document.querySelector(".show-communes-btn");
@@ -168,7 +168,7 @@ const handleCommuneClick = (feature, layer) => {
   );
 
   // Привяжем, но НЕ открываем через bindPopup
-  layer.bindPopup(html, { minWidth: 330 });
+  layer.bindPopup(html, { minWidth: 230 });
 
   layer.on("click", () => {
     // Закрываем все попапы вручную
