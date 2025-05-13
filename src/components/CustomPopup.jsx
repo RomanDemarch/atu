@@ -44,7 +44,7 @@ export default function CustomPopup({ props, type }) {
         style={{
           borderCollapse: "collapse",
           marginTop: "8px",
-          tableLayout: "fixed",
+          tableLayout: "auto", 
           fontSize: "1rem",
           width: "100%",
         }}
