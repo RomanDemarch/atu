@@ -15,7 +15,7 @@ export default function CustomPopup({ props, type }) {
   const isLand = type === "land";
 
   return (
-    <div style={{ whiteSpace: "nowrap" }}>
+    <div style={{ whiteSpace: "nowrap", color:rgba(255,255,255,0.75) }}>
       <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
         <div style={{ minWidth: "60px", flexShrink: 0 }}>
           <img
