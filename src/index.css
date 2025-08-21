@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.leaflet-popup-content-wrapper {
+  background-color: rgba(255,255,255,0.75); /* фон попапа */
+  border: 0px solid #DD2233; /* рамка */
+  padding: 8px;
+}
+
+.leaflet-popup-tip {
+  background-color: rgba(255,255,255,0.75); /* стрелка того же цвета */
+  border: 0px solid #DD2233;
+}
