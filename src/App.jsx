@@ -187,7 +187,7 @@ setTimeout(() => {
       // Центруем карту вручную
       const map = mapRef.current;
       if (map) {
-        map.setView([53.7, 27.9], 6, { animate: true, duration: 0.75 });
+        map.setView([53.8, 27.9], 6, { animate: true, duration: 0.75 });
       }
     });
   }
@@ -205,7 +205,7 @@ setTimeout(() => {
 
   return (
     <div className="h-screen w-full">
-      <MapContainer center={[53.7, 27.9]} zoom={7} minZoom={6} maxBounds={maxBounds} maxBoundsViscosity={1.0} className="h-full w-full z-0"
+      <MapContainer center={[53.8, 27.9]} zoom={7} minZoom={6} maxBounds={maxBounds} maxBoundsViscosity={1.0} className="h-full w-full z-0"
         whenCreated={(map) => (mapRef.current = map)}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org">OpenStreetMap</a>'
