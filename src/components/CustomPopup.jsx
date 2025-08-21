@@ -102,7 +102,7 @@ export default function CustomPopup({ props, type }) {
         padding: "8px 16px",
         border: "2px solid #999",
         borderRadius: "8px",
-        backgroundColor: "#fff",
+        backgroundColor: "none",
         color: "#999",
         fontWeight: "bold",
         cursor: "pointer"
@@ -114,7 +114,7 @@ export default function CustomPopup({ props, type }) {
         padding: "8px 16px",
         border: "2px solid #FF8899",
         borderRadius: "8px",
-        backgroundColor: "#fff",
+        backgroundColor: "none",
         color: "#FF8899",
         fontWeight: "bold",
         cursor: "pointer"
