@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .leaflet-popup-content-wrapper {
-  background-color: rgba(255,255,255,1); /* фон попапа */
+  background-color: rgba(230,230,230,1); /* фон попапа */
   border: 3px solid #000; /* рамка */
 }
 
