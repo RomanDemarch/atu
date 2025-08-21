@@ -5,7 +5,6 @@
 .leaflet-popup-content-wrapper {
   background-color: rgba(255,255,255,0.75); /* фон попапа */
   border: 0px solid #DD2233; /* рамка */
-  padding: 8px;
 }
 
 .leaflet-popup-tip {
