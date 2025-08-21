@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .leaflet-popup-content-wrapper {
-  background-color: rgba(255,255,255,0.75); /* фон попапа */
+  background-color: rgba(128,128,128,0.75); /* фон попапа */
   border: 0px solid #DD2233; /* рамка */
 }
 
 .leaflet-popup-tip {
-  background-color: rgba(255,255,255,0.75); /* стрелка того же цвета */
+  background-color: rgba(128,128,128,0.75); /* стрелка того же цвета */
   border: 0px solid #DD2233;
 }
